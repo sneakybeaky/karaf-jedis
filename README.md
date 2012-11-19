@@ -1,6 +1,6 @@
 # karaf-jedis
 
-Jedis commands for the Karaf shell
+Jedis commands for the Karaf shell. Heavily influenced by the great [blog post](http://www.liquid-reality.de/x/LYBk) by Christian Schneider
 
 # Installing the Jedis bundle
 
