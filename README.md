@@ -18,3 +18,13 @@ Then install the Karaf shell commands :
 ```
 > install -s mvn:com.ninedemons.karaf.jedis/jedis-command/1.0.0-SNAPSHOT
 ```
+
+You should now see new commands under the 'jedis' scope, e.g.
+
+```
+> help jedis
+COMMANDS
+        jedis:info    Gets info from the selected Redis server
+        jedis:ping    Pings the selected Redis server
+        jedis:select  Selects a Jedis pool to use
+```
