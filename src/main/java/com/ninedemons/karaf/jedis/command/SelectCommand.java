@@ -34,7 +34,7 @@ public class SelectCommand implements Action {
             Map<String,JedisInfo> table = getDataSourcesInfo();
             System.out.println(table);
         } else {
-            JedisSelect.selectDataSource(name);
+            jedisSelect.selectDataSource(name);
         }
         return null;
     }

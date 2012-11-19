@@ -16,7 +16,12 @@ public class JedisSelect {
         this.context = context;
     }
 
+    public void setJedisAccess(JedisAccess jedisAccess) {
+        this.jedisAccess = jedisAccess;
+    }
+
     private BundleContext context;
+    private JedisAccess jedisAccess;
 
 
     public ServiceReference[] getDataSources() {
@@ -54,7 +59,16 @@ public class JedisSelect {
         return (String)ref.getProperty("osgi.jndi.service.name");
     }
 
-    public static void selectDataSource(String name) {
-        //To change body of created methods use File | Settings | File Templates.
+    public void selectDataSource(String name) {
+        ServiceReference[] dataSources = getDataSources();
+        for (ServiceReference ref : dataSources) {
+            String jndiName = getJndiName(ref);
+            if (name.equals(jndiName)) {
+                JedisPool jedisPool = (JedisPool)context.getService(ref);
+                jedisAccess.setPool(jedisPool);
+                return;
+            }
+        }
+        throw new RuntimeException("No Jedis Pool with name " + name + " found");
     }
 }

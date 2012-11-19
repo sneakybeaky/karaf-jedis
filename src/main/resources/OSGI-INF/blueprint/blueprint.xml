@@ -3,12 +3,25 @@
 
     <bean id="jedisSelect" class="com.ninedemons.karaf.jedis.service.JedisSelect">
         <property name="context" ref="blueprintBundleContext" />
+        <property name="jedisAccess" ref="jedisAccess"/>
     </bean>
+
+    <bean id="jedisAccess" class="com.ninedemons.karaf.jedis.service.JedisAccess"/>
 
     <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.1.0">
         <command name="jedis/select">
             <action class="com.ninedemons.karaf.jedis.command.SelectCommand">
                 <property name="jedisSelect" ref="jedisSelect" />
+            </action>
+        </command>
+        <command name="jedis/info">
+            <action class="com.ninedemons.karaf.jedis.command.InfoCommand">
+                <property name="jedisAccess" ref="jedisAccess" />
+            </action>
+        </command>
+        <command name="jedis/ping">
+            <action class="com.ninedemons.karaf.jedis.command.PingCommand">
+                <property name="jedisAccess" ref="jedisAccess" />
             </action>
         </command>
     </command-bundle>
