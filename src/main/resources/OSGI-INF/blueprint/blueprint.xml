@@ -1,0 +1,16 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" default-activation="eager">
+
+
+    <bean id="jedisSelect" class="com.ninedemons.karaf.jedis.service.JedisSelect">
+        <property name="context" ref="blueprintBundleContext" />
+    </bean>
+
+    <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.1.0">
+        <command name="jedis/select">
+            <action class="com.ninedemons.karaf.jedis.command.SelectCommand">
+                <property name="jedisSelect" ref="jedisSelect" />
+            </action>
+        </command>
+    </command-bundle>
+
+</blueprint>

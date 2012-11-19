@@ -13,3 +13,8 @@ From the Karaf shell run
 
 And then install the datasource Blueprint file from the datasource folder by copying to the Karaf deploy folder.
 
+Then install the Karaf shell commands :
+
+```
+> install -s mvn:com.ninedemons.karaf.jedis/jedis-command/1.0.0-SNAPSHOT
+```
