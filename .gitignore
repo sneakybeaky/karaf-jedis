@@ -9,3 +9,5 @@
 *.iml
 .idea/
 
+# Maven builds
+*/target/**
