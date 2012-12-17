@@ -8,11 +8,18 @@
 
     <bean id="jedisAccess" class="com.ninedemons.karaf.jedis.service.JedisAccess"/>
 
+    <bean id="JedisNameCompleter" class="com.ninedemons.karaf.jedis.command.JedisNameCompleter">
+        <property name="jedisSelect" ref="jedisSelect" />
+    </bean>
+
     <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.1.0">
         <command name="jedis/select">
             <action class="com.ninedemons.karaf.jedis.command.SelectCommand">
                 <property name="jedisSelect" ref="jedisSelect" />
             </action>
+            <completers>
+                <ref component-id="JedisNameCompleter" />
+            </completers>
         </command>
         <command name="jedis/info">
             <action class="com.ninedemons.karaf.jedis.command.InfoCommand">

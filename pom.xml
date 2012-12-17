@@ -11,7 +11,7 @@
     <packaging>bundle</packaging>
 
     <name>Karaf shell commands to work with Jedis</name>
-    <description>Commands to work with Jedis from the GoGo shell : select, info and ping</description>
+    <description>Commands to work with Jedis from the GoGo shell : jedisSelect, info and ping</description>
 
     <distributionManagement>
         <repository>

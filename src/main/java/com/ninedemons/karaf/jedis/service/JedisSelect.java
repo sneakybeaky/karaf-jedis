@@ -7,6 +7,10 @@ import redis.clients.jedis.Client;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 /**
  * Created by Jon Barber
  */
@@ -34,6 +38,15 @@ public class JedisSelect {
         } catch (InvalidSyntaxException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Collection<String> getDataSourceNames() {
+        ServiceReference[] dataSources = getDataSources();
+        List<String> dsNames = new ArrayList<String>();
+        for (ServiceReference ref : dataSources) {
+            dsNames.add(getJndiName(ref));
+        }
+        return dsNames;
     }
 
     public JedisInfo getDataSourceInfo(ServiceReference reference) {
