@@ -43,7 +43,6 @@ public class SelectCommand implements Action {
 
     public List<JedisInfo> getDataSourcesInfo() {
 
-
         ServiceReference[] dataSources = jedisSelect.getDataSources();
 
         if (dataSources.length == 0) {

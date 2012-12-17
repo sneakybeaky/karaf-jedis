@@ -10,6 +10,7 @@ public class JedisInfo {
     private int port;
     private int timeout;
     private String jndiName;
+    private boolean selected;
 
     public void setJndiName(String jndiName) {
         this.jndiName = jndiName;
@@ -43,6 +44,14 @@ public class JedisInfo {
         return jndiName;
     }
 
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
     @Override
     public String toString() {
         return "JedisInfo{" +
@@ -50,6 +59,7 @@ public class JedisInfo {
                 ", port=" + port +
                 ", timeout=" + timeout +
                 ", jndiName='" + jndiName + '\'' +
+                ", selected=" + selected +
                 '}';
     }
 
@@ -62,6 +72,15 @@ public class JedisInfo {
         out.print(port);
         out.print(", Timeout=");
         out.print(timeout);
-        out.println(" ms)");
+        out.print(" ms)");
+
+        if (selected) {
+            out.println("\t<= Selected");
+        } else {
+            out.println();
+        }
+
     }
+
+
 }

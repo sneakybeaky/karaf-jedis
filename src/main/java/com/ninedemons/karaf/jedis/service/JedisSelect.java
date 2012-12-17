@@ -62,6 +62,7 @@ public class JedisSelect {
         info.setHost(client.getHost());
         info.setPort(client.getPort());
         info.setTimeout(client.getTimeout());
+        info.setSelected(jedisPool == jedisAccess.getJedisPool());
 
         return info;
 

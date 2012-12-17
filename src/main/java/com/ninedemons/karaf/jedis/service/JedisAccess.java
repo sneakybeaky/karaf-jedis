@@ -13,6 +13,10 @@ public class JedisAccess {
         this.jedisPool = jedisPool;
     }
 
+    public JedisPool getJedisPool() {
+        return jedisPool;
+    }
+
     public String ping() {
         if (this.jedisPool == null) {
             throw new RuntimeException("No Jedis pool selected");
