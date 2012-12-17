@@ -8,9 +8,7 @@ import org.apache.felix.gogo.commands.Command;
 import org.apache.felix.service.command.CommandSession;
 import org.osgi.framework.ServiceReference;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Jon Barber
@@ -31,28 +29,32 @@ public class SelectCommand implements Action {
     @Override
     public Object execute(CommandSession session) throws Exception {
         if (name == null) {
-            Map<String,JedisInfo> table = getDataSourcesInfo();
-            System.out.println(table);
+            List<JedisInfo> jedisInfoList = getDataSourcesInfo();
+
+            for (JedisInfo info : jedisInfoList) {
+                info.print(System.out);
+            }
+
         } else {
             jedisSelect.selectDataSource(name);
         }
         return null;
     }
 
-    public Map<String,JedisInfo> getDataSourcesInfo() {
+    public List<JedisInfo> getDataSourcesInfo() {
 
 
         ServiceReference[] dataSources = jedisSelect.getDataSources();
 
         if (dataSources.length == 0) {
-            return Collections.emptyMap();
+            return Collections.emptyList();
         }
 
-        Map<String,JedisInfo> jedisDataSources = new HashMap<String, JedisInfo>(dataSources.length);
+        List<JedisInfo> jedisDataSources = new ArrayList<JedisInfo>(dataSources.length);
 
         for (ServiceReference dataSource : dataSources) {
             JedisInfo jedisInfo = jedisSelect.getDataSourceInfo(dataSource);
-            jedisDataSources.put(jedisInfo.getJndiName(),jedisInfo);
+            jedisDataSources.add(jedisInfo);
         }
 
         return jedisDataSources;

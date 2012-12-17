@@ -10,6 +10,9 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
+    <name>Karaf shell commands to work with Jedis</name>
+    <description>Commands to work with Jedis from the GoGo shell : select, info and ping</description>
+
     <distributionManagement>
         <repository>
             <id>ninedemons-maven-s3-release-repo</id>

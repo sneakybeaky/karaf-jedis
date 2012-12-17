@@ -1,5 +1,7 @@
 package com.ninedemons.karaf.jedis.service;
 
+import java.io.PrintStream;
+
 /**
  * Created by Jon Barber
  */
@@ -49,5 +51,17 @@ public class JedisInfo {
                 ", timeout=" + timeout +
                 ", jndiName='" + jndiName + '\'' +
                 '}';
+    }
+
+    public void print(PrintStream out) {
+        out.print(jndiName);
+        out.print('\t');
+        out.print("(Host='");
+        out.print(host);
+        out.print("', Port=");
+        out.print(port);
+        out.print(", Timeout=");
+        out.print(timeout);
+        out.println(" ms)");
     }
 }
