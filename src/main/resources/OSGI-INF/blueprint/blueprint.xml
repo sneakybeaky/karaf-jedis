@@ -13,7 +13,7 @@
     </bean>
 
     <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.1.0">
-        <command name="jedis/select">
+        <command>
             <action class="com.ninedemons.karaf.jedis.command.SelectCommand">
                 <property name="jedisSelect" ref="jedisSelect" />
             </action>
@@ -21,12 +21,12 @@
                 <ref component-id="JedisNameCompleter" />
             </completers>
         </command>
-        <command name="jedis/info">
+        <command>
             <action class="com.ninedemons.karaf.jedis.command.InfoCommand">
                 <property name="jedisAccess" ref="jedisAccess" />
             </action>
         </command>
-        <command name="jedis/ping">
+        <command>
             <action class="com.ninedemons.karaf.jedis.command.PingCommand">
                 <property name="jedisAccess" ref="jedisAccess" />
             </action>

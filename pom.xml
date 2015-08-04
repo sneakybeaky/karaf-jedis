@@ -103,8 +103,8 @@
         </plugins>
         <extensions>
             <extension>
-                <groupId>org.springframework.build.aws</groupId>
-                <artifactId>org.springframework.build.aws.maven</artifactId>
+                <groupId>org.springframework.build</groupId>
+                <artifactId>aws-maven</artifactId>
                 <version>${springframework.build.aws.version}</version>
             </extension>
         </extensions>
@@ -117,6 +117,6 @@
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
         <jedis.version>2.1.0</jedis.version>
         <karaf.shell.version>2.2.5</karaf.shell.version>
-        <springframework.build.aws.version>3.0.0.RELEASE</springframework.build.aws.version>
+        <springframework.build.aws.version>5.0.0.RELEASE</springframework.build.aws.version>
     </properties>
 </project>
